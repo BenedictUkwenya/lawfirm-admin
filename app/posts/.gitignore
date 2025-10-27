@@ -1,0 +1,14 @@
+# Dependencies
+/node_modules
+
+# Build directory
+/.next/
+/out/
+
+# Local Environment Variables
+# NEVER commit your secrets!
+.env.local
+
+# Logs
+npm-debug.log*
+yarn-error.log*
