@@ -1,12 +1,8 @@
-import type { Metadata } from "next";
+'use client';
+// No longer need useState here
 import "./globals.css";
-import Sidebar from "@/components/Sidebar";
-import { Toaster } from 'react-hot-toast'; // 1. Import Toaster
-
-export const metadata: Metadata = {
-  title: "Law Firm Admin",
-  description: "Admin dashboard for the law firm blog",
-};
+import { Toaster } from 'react-hot-toast';
+import { AuthProvider } from '@/context/AuthContext';
 
 export default function RootLayout({
   children,
@@ -15,12 +11,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
-        <Toaster position="top-center" /> {/* 2. Add the component here */}
-        <div className="flex h-screen bg-gray-100">
-          <Sidebar />
-          <main className="flex-1 p-6 overflow-y-auto">{children}</main>
-        </div>
+      <body className="bg-slate-50">
+        <AuthProvider>
+          <Toaster position="top-center" />
+          {children}
+        </AuthProvider>
       </body>
     </html>
   );
